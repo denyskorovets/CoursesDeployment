@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete</title>
+    {% include './header.html' %}
+</head>
+<body>
+    <div class="container">
+        <h1>Are you Sure you want to DELETE the following course?</h1>
+        <h3> Name: {{ toBeDeleted.name }}</h3>
+        <h3> Description: {{ toBeDeleted.description.description }}</h3>
+    <form action="/delete" method="post">
+        {% csrf_token %}
+        <input type="hidden" value="{{ toBeDeleted.id }}" name="id">
+        <button class="btn btn-danger">Yes</button>
+    </form>
+    <form action="/" method="get">
+        <button class="btn btn-primary">No</button>
+    </form>
+    </div>
+
+</body>
+</html>
